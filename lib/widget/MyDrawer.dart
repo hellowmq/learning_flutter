@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:my_flicke_app/page/DismissingPage.dart';
+import 'package:my_flicke_app/page/TodoPage.dart';
 
-class MyDrawer extends StatelessWidget{
+class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Drawer(
@@ -39,35 +41,91 @@ class MyDrawer extends StatelessWidget{
             ),
           ),
           new ListTile(
+            leading: new Icon(Icons.list),
             trailing: new Icon(Icons.chevron_right),
             title: new Text(
-              'Item 1',
+              'List',
               style: new TextStyle(
                 fontSize: 16.0,
               ),
             ),
             onTap: () {
-              // Update the state of the app
-              // ...
-              // Then close the drawer
-
               print('__________1__________');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => DismissingItemList()),
+              );
+            },
+          ),
+          new ListTile(
+            leading: new Icon(Icons.assignment),
+            trailing: new Icon(Icons.chevron_right),
+            title: new Text(
+              'Todos',
+              style: new TextStyle(
+                fontSize: 16.0,
+              ),
+            ),
+            onTap: () {
+              print('__________2__________');
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => TodoScreen(
+                        todoLists: List.generate(
+                          20,
+                          (i) => Todo(
+                                'Todo $i',
+                                'A description of what needs to be done for Todo $i',
+                              ),
+                        ),
+                      ),
+                ),
+              );
+            },
+          ),
+          new ListTile(
+            leading: new Icon(Icons.search),
+            trailing: new Icon(Icons.chevron_right),
+            title: new Text(
+              'Search',
+              style: new TextStyle(
+                fontSize: 16.0,
+              ),
+            ),
+            onTap: () {
+              print('__________3__________');
               Navigator.pop(context);
             },
           ),
           new ListTile(
+            leading: new Icon(Icons.settings),
             trailing: new Icon(Icons.chevron_right),
             title: new Text(
-              'Item 2',
+              'Settings',
               style: new TextStyle(
                 fontSize: 16.0,
               ),
             ),
             onTap: () {
-              // Update the state of the app
-              // ...
-              // Then close the drawer
-              print('__________2__________');
+              print('__________3__________');
+              Navigator.pop(context);
+            },
+          ),
+          new Divider(
+            height: 4.0,
+          ),
+          new ListTile(
+            leading: new Icon(Icons.info),
+            trailing: new Icon(Icons.chevron_right),
+            title: new Text(
+              'About',
+              style: new TextStyle(
+                fontSize: 16.0,
+              ),
+            ),
+            onTap: () {
+              print('__________about__________');
               Navigator.pop(context);
             },
           ),
@@ -75,5 +133,4 @@ class MyDrawer extends StatelessWidget{
       ),
     );
   }
-
 }
