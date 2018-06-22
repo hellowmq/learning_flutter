@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_flicke_app/page/DismissingPage.dart';
 import 'package:my_flicke_app/page/TodoPage.dart';
+import 'package:my_flicke_app/page/NameRoutePage.dart';
 
 class MyDrawer extends StatelessWidget {
   @override
@@ -72,8 +73,8 @@ class MyDrawer extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => TodoScreen(
-                        todoLists: List.generate(
-                          20,
+                        todos: List.generate(
+                          0,
                           (i) => Todo(
                                 'Todo $i',
                                 'A description of what needs to be done for Todo $i',
@@ -94,8 +95,12 @@ class MyDrawer extends StatelessWidget {
               ),
             ),
             onTap: () {
-              print('__________3__________');
-              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => NameRoutePage(),
+                ),
+              );
             },
           ),
           new ListTile(
