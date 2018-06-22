@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-
 class NameRoutePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-//      home :MainNameRoutePage(),
       initialRoute: '/',
       routes: {
         '/': (context) => MainNameRoutePage(),
         '/first': (context) => FirstNameRoutePage(),
+        '/first/mypage': (context) => MyPage(),
         '/second': (context) => SecondNameRoutePage(),
         '/third': (context) => ThirdNameRoutePage(),
       },
@@ -23,7 +22,7 @@ class MainNameRoutePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(
-        title: new Text('Main Page'),
+        title: new Text('Blizzard Page'),
       ),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(18.0, 12.0, 18.0, 24.0),
@@ -55,14 +54,13 @@ class MainNameRoutePage extends StatelessWidget {
                   children: <Widget>[
                     new FlatButton(
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.of(context).pushNamed('/');
                       },
                       child: Text('save'),
                     ),
                     FlatButton(
                       onPressed: () {
                         Navigator.pushNamed(context, '/first');
-
                       },
                       child: Text('Zoom In'),
                     ),
@@ -81,7 +79,7 @@ class MainNameRoutePage extends StatelessWidget {
                       child: CachedNetworkImage(
                         placeholder: CircularProgressIndicator(),
                         imageUrl:
-                        'http://diablo3.nos.netease.com/2/artwork/artwork1986.jpg',
+                            'http://diablo3.nos.netease.com/2/artwork/artwork1986.jpg',
                       ),
                     ),
                   ],
@@ -120,7 +118,7 @@ class MainNameRoutePage extends StatelessWidget {
                       child: CachedNetworkImage(
                         placeholder: CircularProgressIndicator(),
                         imageUrl:
-                        'http://img1.cache.netease.com/game/sc2/media/artwork/artwork-starcraft04-large.jpg',
+                            'http://img1.cache.netease.com/game/sc2/media/artwork/artwork-starcraft04-large.jpg',
                       ),
                     ),
                   ],
@@ -167,8 +165,52 @@ class FirstNameRoutePage extends StatelessWidget {
         child: CachedNetworkImage(
           placeholder: CircularProgressIndicator(),
           imageUrl:
-          'http://overwatch.nos.netease.com/2/media/Wallpapers/lineup-standard.3DDlu.jpg',
+              'http://overwatch.nos.netease.com/2/media/Wallpapers/lineup-standard.3DDlu.jpg',
         ),
+      ),
+    );
+  }
+}
+
+class MyPage extends StatefulWidget {
+  @override
+  _MyPageState createState() => _MyPageState();
+}
+
+class _MyPageState extends State<MyPage> {
+  bool _visible = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: AppBar(
+        title: Text('MyPage'),
+      ),
+      body: Center(
+        child: AnimatedOpacity(
+          opacity: _visible ? 1.0 : 0.0,
+          duration: Duration(milliseconds: 800),
+          child: new RaisedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => NameRoutePage(),
+                ),
+              );
+            },
+            color: Colors.blue,
+            child: new Text('Fade in and out'),
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            _visible = !_visible;
+          });
+        },
+        child: Icon(Icons.flip),
       ),
     );
   }

@@ -22,13 +22,13 @@ class TodoScreen extends StatefulWidget {
   TodoScreen({Key key, @required this.todos}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => new TodoScreenState(todos: todos);
+  State<StatefulWidget> createState() => new _TodoScreenState(todos: todos);
 }
 
-class TodoScreenState extends State<TodoScreen> {
+class _TodoScreenState extends State<TodoScreen> {
   List<Todo> todos;
 
-  TodoScreenState({Key key, @required this.todos}) : super();
+  _TodoScreenState({Key key, @required this.todos}) : super();
 
   @override
   Widget build(BuildContext context) {
@@ -110,19 +110,19 @@ class TodoItemPage extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return new TodoItemPageState(
+    return new _TodoItemPageState(
       todo: this.todo,
     );
   }
 }
 
-class TodoItemPageState extends State<TodoItemPage> {
+class _TodoItemPageState extends State<TodoItemPage> {
   Todo todo;
   Todo tempTodo;
   bool editTitle = false;
   bool editDescription = false;
 
-  TodoItemPageState({Key key, @required this.todo}) : super();
+  _TodoItemPageState({Key key, @required this.todo}) : super();
 
   final titleController = TextEditingController();
   final descriptionController = TextEditingController();
