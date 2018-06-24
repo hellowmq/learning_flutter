@@ -25,9 +25,9 @@ class MyScaffold extends StatelessWidget {
       appBar: new AppBar(
         bottom: new TabBar(
           tabs: [
-            new Tab(icon: new Icon(Icons.directions_car)),
-            new Tab(icon: new Icon(Icons.directions_transit)),
-            new Tab(icon: new Icon(Icons.directions_bike)),
+            new Tab(child: new Text('ListView'),),
+            new Tab(child: new Text('Transit'),),
+            new Tab(child: new Text('Bike'),),
           ],
         ),
         title: new Text('Tabs Demo'),
