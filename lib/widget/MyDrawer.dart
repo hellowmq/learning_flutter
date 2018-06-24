@@ -4,6 +4,8 @@ import 'package:my_flicke_app/page/TodoPage.dart';
 import 'package:my_flicke_app/page/NameRoutePage.dart';
 import 'package:my_flicke_app/page/AccountPage.dart';
 import 'package:my_flicke_app/page/InternetPage.dart';
+import 'package:my_flicke_app/page/SocketPage.dart';
+import 'package:my_flicke_app/page/ParseJsonPage.dart';
 
 class MyDrawer extends StatelessWidget {
   @override
@@ -137,17 +139,39 @@ class MyDrawer extends StatelessWidget {
             },
           ),
           new ListTile(
-            leading: new Icon(Icons.settings),
+            leading: new Icon(Icons.room_service),
             trailing: new Icon(Icons.chevron_right),
             title: new Text(
-              'Settings',
+              'Socket',
               style: new TextStyle(
                 fontSize: 16.0,
               ),
             ),
             onTap: () {
-              print('__________3__________');
-              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SocketPage(),
+                ),
+              );
+            },
+          ),
+          new ListTile(
+            leading: new Icon(Icons.system_update_alt),
+            trailing: new Icon(Icons.chevron_right),
+            title: new Text(
+              'Json',
+              style: new TextStyle(
+                fontSize: 16.0,
+              ),
+            ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ParseJsonPage(),
+                ),
+              );
             },
           ),
           new Divider(

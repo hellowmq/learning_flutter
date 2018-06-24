@@ -1,89 +1,65 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 Future<Post> fetchPost() async {
   final response = await http.get(
-      'https://m.weibo.cn/api/container/getIndex?containerid=1076035772317385&page=3');
+    'https://jsonplaceholder.typicode.com/posts/1',
+    headers: {HttpHeaders.AUTHORIZATION: "Basic your_api_token_here"},
+  );
 
   if (response.statusCode == 200) {
-    // If the call to the server was successful, parse the JSON
     return Post.fromJson(json.decode(response.body));
   } else {
-    // If that call was not successful, throw an error.
     throw Exception('Failed to load post');
   }
 }
-//
-//class Post {
-//  final int ok;
-//  final String userId;
-//  final String screenName;
-//  final String scheme;
-//  final String text;
-//  final String source;
-//
-//  Post({this.ok,this.userId,this.screenName,this.scheme,this.text,this.source});
-//
-//  factory Post.fromJson(Map<String, dynamic> json) {
-//    return Post(
-//      ok:json['ok'],
-//      userId: json['data']['cards'](1)['mblog']['id'],
-//      screenName:json['data']['cards'](1)['mblog']['user']['screen_name'],
-//      scheme: json['data']['cards'](1)['scheme'],
-//      text:json['data']['cards'](1)['mblog']['text'] ,
-////    text: json['ok'],
-//      source:json['data']['cards'](1)['mblog']['source'] ,
-//
-//
-//    );
-//  }
-//}
 
-class Post{
-  final int ok;
-  final String containerId;
+class Post {
+  final int userId;
+  final int id;
+  final String title;
+  final String body;
 
-  Post({this.ok,this.containerId});
+  Post({this.userId, this.id, this.title, this.body});
 
-  factory Post.fromJson(Map<String, dynamic> json){
+  factory Post.fromJson(Map<String, dynamic> json) {
     return Post(
-      ok:json['ok'],
-      containerId:json['data']['cardlistInfo']['containerId'],
+      userId: json['userId'],
+      id: json['id'],
+      title: json['title'],
+      body: json['body'],
     );
   }
 }
 
-class InternetPage extends StatefulWidget {
-  @override
-  _InternetPageState createState() => _InternetPageState();
-}
-
-class _InternetPageState extends State<InternetPage> {
+class InternetPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Fetch Data Example'),
+    return MaterialApp(
+      title: 'Fetch Data Example',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
-      body: Center(
-        child: FutureBuilder<Post>(
-          future: fetchPost(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return Text(snapshot.data.containerId.toString()+'++++++++++++++++++++++++');
-            } else if (snapshot.hasError) {
-              print('okKKKKKKKKKKKKKKKKKKKKKK');
-
-              print('${snapshot.data.ok}');
-              return Text("${snapshot.error}"+'------------------------------');
-            }
-
-            // By default, show a loading spinner
-            return CircularProgressIndicator();
-          },
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Fetch Data Example'),
+        ),
+        body: Center(
+          child: FutureBuilder<Post>(
+            future: fetchPost(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Text(snapshot.data.title);
+              } else if (snapshot.hasError) {
+                return Text("${snapshot.error}");
+              }
+              return CircularProgressIndicator();
+            },
+          ),
         ),
       ),
     );
