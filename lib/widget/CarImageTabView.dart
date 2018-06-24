@@ -17,27 +17,38 @@ class CarImageTabView extends StatelessWidget {
     return new ListView.builder(
       itemBuilder: (context, index) {
         return new Card(
-          child: new GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => CarPage(
-                        index: index,
-                      ),
+          margin: const EdgeInsets.fromLTRB(24.0, 8.0, 24.0, 8.0),
+          color: Color.fromARGB(0xEF, 0xFF, 0xEF, 0xD5),
+          child: new Column(children: <Widget>[
+            new Padding(
+              padding: const EdgeInsets.fromLTRB(24.0, 0.0, 24.0, 8.0),
+              child: new GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CarPage(
+                            index: index,
+                          ),
+                    ),
+                  );
+                },
+                child: new Hero(
+                  tag: index,
+                  child: new CachedNetworkImage(
+                    fit: BoxFit.cover,
+                    placeholder: new CircularProgressIndicator(),
+                    imageUrl:
+                        'https://images.freeimages.com/images/small-previews/2fa/renault-f1-car-1450956.jpg',
+                  ),
                 ),
-              );
-            },
-            child: new Hero(
-              tag: index,
-              child: new CachedNetworkImage(
-                fit: BoxFit.contain,
-                placeholder: new CircularProgressIndicator(),
-                imageUrl:
-                    'https://images.freeimages.com/images/small-previews/2fa/renault-f1-car-1450956.jpg',
               ),
             ),
-          ),
+            new Divider(),
+            new ListTile(
+              title: Text(' $name        '),
+            ),
+          ]),
         );
       },
     );
@@ -101,9 +112,10 @@ class CarPageItem extends ListItem {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => CarPage(
-                            index: index,
-                          )),
+                    builder: (context) => CarPage(
+                          index: index,
+                        ),
+                  ),
                 );
               },
             ),

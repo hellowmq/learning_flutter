@@ -13,13 +13,16 @@ class CarPage extends StatelessWidget {
         title: Text('Image $index'),
       ),
       body: Center(
-        child: Hero(
-          tag: index,
-          child: CachedNetworkImage(
-            fit: BoxFit.contain,
-            placeholder: CircularProgressIndicator(),
-            imageUrl:
-                'https://images.freeimages.com/images/small-previews/2fa/renault-f1-car-1450956.jpg',
+        child: Container(
+          child: Hero(
+            tag: index,
+            child: CachedNetworkImage(
+              width: 1/.001,
+              fit: BoxFit.cover,
+              placeholder: CircularProgressIndicator(),
+              imageUrl:
+                  'https://images.freeimages.com/images/small-previews/2fa/renault-f1-car-1450956.jpg',
+            ),
           ),
         ),
       ),
