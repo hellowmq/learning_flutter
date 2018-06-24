@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class DismissingItemList extends StatelessWidget {
-  DismissingItemList({
+class DismissingPage extends StatelessWidget {
+  DismissingPage({
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final items = new List<String>.generate(100, (i) => "Item ${i + 1}");
-    final boolItems = new List<bool>.generate(100, (i)=>false);
+    final boolItems = new List<bool>.generate(100, (i) => false);
     return new Scaffold(
       appBar: new AppBar(
         leading: new IconButton(
@@ -17,7 +17,7 @@ class DismissingItemList extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        title: new Text('Dismissing Items') ,
+        title: new Text('Dismissing Items'),
       ),
       body: new ListView.builder(
         itemCount: items.length,
@@ -39,12 +39,12 @@ class DismissingItemList extends StatelessWidget {
             // Show a red background as the item is swiped away
             background: new Container(color: Colors.red),
             child: new ListTile(
-                leading: new Checkbox(
-                  value: boolItems[index],
-                  onChanged: (bool newValue){},
-                ),
-                title: new Text('$item'),
-              trailing:new FlutterLogo(),
+              leading: new Checkbox(
+                value: boolItems[index],
+                onChanged: (bool newValue) {},
+              ),
+              title: new Text('$item'),
+              trailing: new FlutterLogo(),
             ),
           );
         },

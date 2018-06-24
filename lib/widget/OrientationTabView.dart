@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class OrientationList extends StatelessWidget {
+class OrientationTabView extends StatelessWidget {
   final Icon icon;
   final String name;
 
-   OrientationList({
+  OrientationTabView({
     Key key,
     this.icon,
     this.name,
@@ -58,14 +58,14 @@ class DirectionItem extends StatelessWidget {
             ),
           ),
           onPressed: () {
-            final mySnackbar = new SnackBar(
+            final mySnackBar = new SnackBar(
               content: new Text('Snackbar called by $name $index'),
               action: new SnackBarAction(
                 label: 'undo',
                 onPressed: () {},
               ),
             );
-            Scaffold.of(context).showSnackBar(mySnackbar);
+            Scaffold.of(context).showSnackBar(mySnackBar);
           },
           icon: icon,
         ),

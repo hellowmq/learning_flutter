@@ -16,16 +16,16 @@ class Todo {
   Todo(this.title, this.description);
 }
 
-class TodoScreen extends StatefulWidget {
+class TodoPage extends StatefulWidget {
   final List<Todo> todos;
 
-  TodoScreen({Key key, @required this.todos}) : super(key: key);
+  TodoPage({Key key, @required this.todos}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => new _TodoScreenState(todos: todos);
 }
 
-class _TodoScreenState extends State<TodoScreen> {
+class _TodoScreenState extends State<TodoPage> {
   List<Todo> todos;
 
   _TodoScreenState({Key key, @required this.todos}) : super();

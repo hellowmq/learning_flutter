@@ -3,8 +3,9 @@ import 'package:my_flicke_app/page/DismissingPage.dart';
 import 'package:my_flicke_app/page/TodoPage.dart';
 import 'package:my_flicke_app/page/NameRoutePage.dart';
 import 'package:my_flicke_app/page/AccountPage.dart';
-class MyDrawer extends StatelessWidget {
+import 'package:my_flicke_app/page/InternetPage.dart';
 
+class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Drawer(
@@ -33,12 +34,11 @@ class MyDrawer extends StatelessWidget {
                       minRadius: 16.0,
                     ),
                   ),
-                  onTap: (){
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => AccountPage()),
-                        );
-
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => AccountPage()),
+                    );
                   },
                 ),
                 new ListTile(
@@ -67,7 +67,7 @@ class MyDrawer extends StatelessWidget {
               print('__________1__________');
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => DismissingItemList()),
+                MaterialPageRoute(builder: (context) => DismissingPage()),
               );
             },
           ),
@@ -85,7 +85,7 @@ class MyDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => TodoScreen(
+                  builder: (context) => TodoPage(
                         todos: List.generate(
                           0,
                           (i) => Todo(
@@ -131,7 +131,7 @@ class MyDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => MyPage(),
+                  builder: (context) => InternetPage(),
                 ),
               );
             },
