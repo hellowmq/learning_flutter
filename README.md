@@ -1,18 +1,15 @@
-# 应用名称：my_flicke_app
+# learning_flutter / my_flicke_app
 
-### 本应用为参照学习 Google 官方文档的学习 Flutter APP。
+> 2018 年的 Flutter 学习沙盒，作为历史练习保留。
 
+仓库将导航、Drawer、Tab、可滑动删除列表、Todo 编辑、HTTP/JSON 请求和 WebSocket 等官方教程主题集中在一个演示应用中。它不是完整产品或已发布 App。
 
+## 当前状态
 
-### 可供学习的参考资料
-- [官方文档](https://flutter.io/).
-- [Homepage - Material Design](https://material.io/)
-- [Flutter中文网](https://flutterchina.club/)
-- [Flutter - 极速构建漂亮的本地应用](http://doc.flutter-dev.cn/)
-- [Awesome Flutter | myMindNode](https://my.mindnode.com/Ez6qV5imBWgjtKb7fWqjSs4atzpR8yi3kmPqWjSu#-951.2,-562.9,2)
-- [DartPad](https://dartpad.dartlang.org/)
-- [Flutter 社区中文资源](https://flutter-io.cn/)
+- 依赖来自 Flutter 早期生态，包括 `cupertino_icons 0.1.x`、`cached_network_image 0.4.x` 和 `http 0.11.x`。
+- 代码早于 Dart null safety，未在当前 Flutter/Dart 工具链上迁移或验证。
+- WebSocket 演示依赖历史 `echo.websocket.org`，远程图片和演示 API 也可能已失效；运行前应检查这些网络端点。
 
+## 许可与素材
 
-#### 中山大学文茂权
-#### 2018/6/25
+仓库当前未设置项目许可证。仓库中的字体、远程图片、包依赖和教程来源可能各自适用不同权利；公开可见不等于授予复制或再分发权利。
